@@ -1,0 +1,96 @@
+const dummyBlogs = [
+    {
+      _id: "633d7f6eaebdd22041a3ad59",
+      title: "lorem ipsum0",
+      ImageURL: "https://unsplash.com/photos/l_dX0Zx3wJ0",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsa, sunt voluptates tempore nisi, minima saepe debitis ab, beatae at cupiditate ratione. Eum eaque dignissimos ad optio incidunt nam corrupti.",
+      likes: 0,
+      __v: 0,
+    },
+    {
+      _id: "633d7f6eaebdd22041a3ad5b",
+      title: "lorem ipsum1",
+      ImageURL: "https://unsplash.com/photos/l_dX0Zx3wJ0",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsa, sunt voluptates tempore nisi, minima saepe debitis ab, beatae at cupiditate ratione. Eum eaque dignissimos ad optio incidunt nam corrupti.",
+      likes: 0,
+      __v: 0,
+    },
+    {
+      _id: "633d7f6eaebdd22041a3ad5d",
+      title: "lorem ipsum2",
+      ImageURL: "https://unsplash.com/photos/l_dX0Zx3wJ0",
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsa, sunt voluptates tempore nisi, minima saepe debitis ab, beatae at cupiditate ratione. Eum eaque dignissimos ad optio incidunt nam corrupti.",
+      likes: 0,
+      __v: 0,
+    }
+  ];
+
+  old index.js file
+
+  
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+import Blog from "../Blog";
+
+const AllBlogs = (props) => {
+  const [Blogs, setBlogs] = useState([]);
+  // const [pageNo, setPageNo] = useState(1);
+  const [hasMore, setHasmore] = useState(true);
+  const [next, setNext] = useState(null);
+  let pageNo = 1;
+
+  const fetchData = async (pageNo) => {
+    console.log("here", pageNo);
+      axios
+        .get(`http://localhost:5000/blogs/pages?pageNo=${pageNo}`) // TODO: USE ENVIRONMENT VARIABLES HERE.
+        .then((res) => {
+          console.log(pageNo);
+          if (!res.data || res.data.length === 0) setHasmore(false);
+          setBlogs((prevState) => {
+            const arr = [...prevState, ...res.data];
+            return arr;
+          });
+          // setPageNo(prevValue => {
+          //   return prevValue + 1;
+          // });
+          pageNo++;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+        // console.log(pageNo);
+  };
+
+  useEffect(() => {
+    fetchData(1);
+  },[fetchData]);
+
+  return (
+    <React.Fragment>
+      <InfiniteScroll
+        dataLength={Blogs.length}
+        next={fetchData}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        {Blogs.map((blog) => (
+          <li key={blog._id}>
+            <Blog title={blog.title} ImageURL={blog.ImageURL} _id={blog._id} />
+          </li>
+        ))}
+      </InfiniteScroll>
+    </React.Fragment>
+  );
+};
+
+export default AllBlogs;
