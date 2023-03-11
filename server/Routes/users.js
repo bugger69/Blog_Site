@@ -17,7 +17,7 @@ router.get("/", isLoggedIn, async (req, res, next) => {
         res.status(200).send(obj);
     } catch (e) {
         console.log(e);
-        res.status(404).json({msg: "Either user not found or There was a n error in fetching blogs"});
+        res.status(404).json({msg: "Either the user was not found or There was an error in fetching blogs"});
     }
 });
 
@@ -29,7 +29,7 @@ router.get("/:uid", isLoggedIn, async (req, res, next) => {
         res.status(200).send(obj);
     } catch (e) {
         console.log(e);
-        res.status(404).json({msg: "Either user not found or There was an error in fetching blogs"});
+        res.status(404).json({msg: "Either the user was not found or There was an error in fetching blogs"});
     }
 })
 
