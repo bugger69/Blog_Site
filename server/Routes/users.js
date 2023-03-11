@@ -3,12 +3,35 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
+const Blog = require('../models/blogs');
 const isLoggedIn = require('../middleware/isLoggedIn');
 const router = express.Router();
 
-// get
+// get another user or your own user
 
-// router.get();
+router.get("/", isLoggedIn, async (req, res, next) => {
+    try {
+        const user = await User.findById(req.user.uid);
+        const blogs = await Blog.find({author: req.user.uid});
+        const obj = {user: {uid: user._id, username: user.username, email: user.email, date_of_joining: user.createdAt}, userBlogs: blogs};
+        res.status(200).send(obj);
+    } catch (e) {
+        console.log(e);
+        res.status(404).json({msg: "Either user not found or There was a n error in fetching blogs"});
+    }
+});
+
+router.get("/:uid", isLoggedIn, async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.uid);
+        const blogs = await Blog.find({author: req.user.uid});
+        const obj = {user: {uid: user._id, username: user.username, email: user.email, date_of_joining: user.createdAt}, userBlogs: blogs};
+        res.status(200).send(obj);
+    } catch (e) {
+        console.log(e);
+        res.status(404).json({msg: "Either user not found or There was an error in fetching blogs"});
+    }
+})
 
 // register
 

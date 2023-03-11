@@ -38,9 +38,9 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("<h3>Welcome to this blog site</h3>");
-});
+// app.get("/", (req, res) => {
+//   res.send("<h3>Welcome to this blog site</h3>");
+// });
 
 app.use("/", userRoutes);
 app.use("/blogs", blogRoutes);

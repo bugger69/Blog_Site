@@ -46,7 +46,7 @@ const Login = (props) => {
           const tokenExpiration = localStorage.getItem("tokenExpiration");
           const expirationTime =
           new Date(tokenExpiration).getTime() - Date.now();
-          const logoutTimer = setTimeout(Logout, expirationTime);
+          let logoutTimer = setTimeout(Logout, expirationTime);
 
           const resetLogoutTimer = () => {
             clearTimeout(logoutTimer);
