@@ -73,7 +73,7 @@ const AllBlogs = (props) => {
       <Container>
         {Blogs.map((blog) => (
           
-            <Blog key={blog._id} title={blog.title} ImageURL={blog.ImageURL} _id={blog._id} username={blog.author.username} />
+            <Blog key={blog._id} title={blog.title} ImageURL={blog.ImageURL} _id={blog._id} username={blog.author.username} className="mb-2" />
           
         ))}
         {isLoading ? <h6>Loading...</h6> : <React.Fragment></React.Fragment>}
