@@ -5,6 +5,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
 
 //setting up express
 const app = express();
@@ -39,6 +40,7 @@ app.use(mongoSanitize());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(helmet()); // Might need expansion
 
 // app.get("/", (req, res) => {
 //   res.send("<h3>Welcome to this blog site</h3>");
