@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const mongoSanitize = require("express-mongo-sanitize");
 
 //setting up express
 const app = express();
@@ -34,6 +35,7 @@ async function main() {
 // });
 
 app.use(cors());
+app.use(mongoSanitize());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
