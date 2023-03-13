@@ -105,7 +105,7 @@ router.post("/login", async (req, res) => {
         process.env.JWT_SECRET || "secret123",
         { expiresIn: "2h" }
       );
-      res.json({ status: "ok", token: token, username: User.username });
+      res.json({ status: "ok", token: token, username: user.username });
     } else {
       throw new Error("No user found with matching email and password.");
     }
