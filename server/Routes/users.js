@@ -7,7 +7,7 @@ const Blog = require("../models/blogs");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const router = express.Router();
 
-// get another user or your own user
+// get another user or your own user data
 
 router.get("/", isLoggedIn, async (req, res, next) => {
   try {
@@ -41,7 +41,6 @@ router.get("/:uid", isLoggedIn, async (req, res, next) => {
       user: {
         uid: user._id,
         username: user.username,
-        email: user.email,
         date_of_joining: user.createdAt,
       },
       userBlogs: blogs,
