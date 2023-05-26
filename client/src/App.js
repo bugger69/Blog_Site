@@ -17,6 +17,7 @@ import Login from './components/Login';
 import CreateBlog from './components/CreateBlogForm';
 import EditBlog from './components/EditBlogForm';
 import UserEditDisplay from './components/UserEditAndDisplay';
+import Dashboard from "./components/Dashboard";
 
 function App() {
   let routes = useRoutes([
@@ -27,7 +28,8 @@ function App() {
     {path: "/blogs", element: <AllBlogs />}, 
     {path: "/register", element: <Register />},
     {path: "/login", element: <Login />},
-    {path: "/user", element: <UserEditDisplay />}
+    {path: "/user", element: <UserEditDisplay />},
+    {path: "/user/dashboard", element: <Dashboard />}
   ]);
 
   return (

@@ -47,7 +47,7 @@ const UserEditDisplay = () => {
         )}
         {userData.user ? <Card.Text className="mx-2" >Date of Joining: {getDateFromString(userData.user.date_of_joining).getDate()}</Card.Text>: <React.Fragment></React.Fragment>}
         {userData.user ? <Card.Text className="mx-2" >Email: {userData.user.email}</Card.Text>: <React.Fragment></React.Fragment>}
-        {userData.user ? <Card.Footer><Button>Dashboard</Button></Card.Footer>: <React.Fragment></React.Fragment>}
+        {userData.user ? <Card.Footer><Button href="/user/dashboard">Dashboard</Button></Card.Footer>: <React.Fragment></React.Fragment>}
       </Card>
     </React.Fragment>
   );
