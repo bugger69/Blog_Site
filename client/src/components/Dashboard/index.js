@@ -38,16 +38,14 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       <SiteNavbar />
-      <Card>
-        <Card.Title>Dashboard</Card.Title>
+        <h1>Your Blogs</h1> {/** fix this with fonts and all */}
         {userData.userBlogs ? (
           userData.userBlogs.map((blog) => {
-            return <Card.Link href={`blog/${blog._id}`}>{blog.title}</Card.Link>;
+            return<Card className="my-1 mx-2"><Card.Link className="mx-2" href={`blog/${blog._id}`}>{blog.title}</Card.Link></Card> ;
           })
         ) : (
           <Card.Title>Oops! You haven't written anything yet ''</Card.Title>
         )}
-      </Card>
     </React.Fragment>
   );
 };
