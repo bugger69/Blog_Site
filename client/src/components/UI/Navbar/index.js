@@ -50,6 +50,11 @@ const SiteNavbar = () => {
             {!token ? (
               <React.Fragment></React.Fragment>
             ) : (
+              <NavDropdown.Item href="/user/dashboard">Dashboard</NavDropdown.Item>
+            )}
+            {!token ? (
+              <React.Fragment></React.Fragment>
+            ) : (
               <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
             )}
           </NavDropdown>
