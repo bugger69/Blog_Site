@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,6 +9,10 @@ import ErrorHandler from "../../ErrorHandler";
 
 const SiteNavbar = () => {
   const token = localStorage.getItem("token");
+  // const [keyword, setKeyWord] = useState("");
+
+  // const Search = () => {}
+
   const Logout = () => {
     try {
       localStorage.removeItem("token");
@@ -31,7 +35,21 @@ const SiteNavbar = () => {
         <Nav className="me-auto d-flex">
           <Nav.Link href="/blogs">All Blogs</Nav.Link>
           <Nav.Link href="/blogs/new">Write a Blog</Nav.Link>
-          <NavDropdown title="User" id="basic-nav-dropdown" className="ml-auto">
+          
+        </Nav>
+        {/* <Form className="d-flex">
+          <Form.Control
+            value={keyword}
+            onChange={Search}
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+          />
+          <Button variant="outline-success" onClick={Search}>Search</Button>
+        </Form> */}
+      </Navbar.Collapse>
+      <NavDropdown title="User" id="basic-nav-dropdown" className="mx-2">
             {!token ? (
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
             ) : (
@@ -58,17 +76,6 @@ const SiteNavbar = () => {
               <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
             )}
           </NavDropdown>
-        </Nav>
-        <Form className="d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success">Search</Button>
-        </Form>
-      </Navbar.Collapse>
     </Navbar>
   );
 };
