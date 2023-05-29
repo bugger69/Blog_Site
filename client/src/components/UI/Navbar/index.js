@@ -9,15 +9,19 @@ import ErrorHandler from "../../ErrorHandler";
 
 const SiteNavbar = () => {
   const token = localStorage.getItem("token");
+  const user = localStorage.getItem("username");
 
   const [username, setUsername] = useState("User");
 
-  if(token) {
+  console.log(user);
+
+  if(user && user !== username) {
     const base64Url = token ? token.split('.')[1] : "";
     const base64 = token? base64Url.replace(/-/g, '+').replace(/_/g, '/') : "";
     const decodedData = token? JSON.parse(atob(base64)) : "";
-    setUsername(token? decodedData.username: "");
+    setUsername(token? decodedData.username: "User");
   }
+
   // const [keyword, setKeyWord] = useState("");
 
   // const Search = () => {}
