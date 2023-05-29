@@ -9,6 +9,15 @@ import ErrorHandler from "../../ErrorHandler";
 
 const SiteNavbar = () => {
   const token = localStorage.getItem("token");
+
+  const [username, setUsername] = useState("User");
+
+  if(token) {
+    const base64Url = token ? token.split('.')[1] : "";
+    const base64 = token? base64Url.replace(/-/g, '+').replace(/_/g, '/') : "";
+    const decodedData = token? JSON.parse(atob(base64)) : "";
+    setUsername(token? decodedData.username: "");
+  }
   // const [keyword, setKeyWord] = useState("");
 
   // const Search = () => {}
@@ -24,6 +33,8 @@ const SiteNavbar = () => {
       return <ErrorHandler />;
     }
   };
+
+  console.log(username);
 
   return (
     <Navbar bg="light" expand="lg" className="mx-2 mb-2">
@@ -49,7 +60,7 @@ const SiteNavbar = () => {
           <Button variant="outline-success" onClick={Search}>Search</Button>
         </Form> */}
       </Navbar.Collapse>
-      <NavDropdown title="User" id="basic-nav-dropdown" className="mx-2">
+      <NavDropdown title={username} id="basic-nav-dropdown" className="mx-2">
             {!token ? (
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
             ) : (
