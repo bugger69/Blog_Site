@@ -41,7 +41,7 @@ const Dashboard = () => {
         <h1>Your Blogs</h1> {/** fix this with fonts and all */}
         {userData.userBlogs ? (
           userData.userBlogs.map((blog) => {
-            return<Card className="my-1 mx-2"><Card.Link className="mx-2" href={`blog/${blog._id}`}>{blog.title}</Card.Link></Card> ;
+            return<Card className="my-1 mx-2"><Card.Link className="mx-2" href={`http://localhost:3000/blogs/${blog._id}`}>{blog.title}</Card.Link></Card> ;
           })
         ) : (
           <Card.Title>Oops! You haven't written anything yet ''</Card.Title>

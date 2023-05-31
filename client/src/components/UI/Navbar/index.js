@@ -52,19 +52,7 @@ const SiteNavbar = () => {
           <Nav.Link href="/blogs/new">Write a Blog</Nav.Link>
           
         </Nav>
-        {/* <Form className="d-flex">
-          <Form.Control
-            value={keyword}
-            onChange={Search}
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-          />
-          <Button variant="outline-success" onClick={Search}>Search</Button>
-        </Form> */}
-      </Navbar.Collapse>
-      <NavDropdown title={username} id="basic-nav-dropdown" className="mx-2">
+        <NavDropdown title={username} id="basic-nav-dropdown" className="mx-2">
             {!token ? (
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
             ) : (
@@ -91,6 +79,19 @@ const SiteNavbar = () => {
               <NavDropdown.Item onClick={Logout}>Logout</NavDropdown.Item>
             )}
           </NavDropdown>
+        {/* <Form className="d-flex">
+          <Form.Control
+            value={keyword}
+            onChange={Search}
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+          />
+          <Button variant="outline-success" onClick={Search}>Search</Button>
+        </Form> */}
+      </Navbar.Collapse>
+      
     </Navbar>
   );
 };
