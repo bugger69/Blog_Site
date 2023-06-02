@@ -35,6 +35,8 @@ npm start in the client terminal
 
 npm run dev in the server terminal
 
+In order to upload thumbnails, you'd have to create a cloudinary account and a .env file in the server, where you set CLOUDINARY_CLOUD_NAME, CLOUDINARY_KEY and CLOUDINARY_SECRET to their respective values.
+
 Available Scripts
 
 In the project directory, you can run:
