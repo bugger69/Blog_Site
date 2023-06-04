@@ -14,7 +14,7 @@ Features
 Drawbacks
 
     needs a global state management
-    blog rendering along with other frontend features is very basic
+    blog rendering along with other UI features is very basic
     auto logout is very buggy
 
 Downloading and Running this Project Locally
