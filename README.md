@@ -14,14 +14,14 @@ Features
 Drawbacks
 
     needs a global state management
+    blog rendering along with other frontend features is very basic
     auto logout is very buggy
-
 
 Downloading and Running this Project Locally
 
     clone the repository
 
-git clone https://github.com/bugger69/Blog_Site.git
+git clone <https://github.com/bugger69/Blog_Site.git>
 
     open a split terminal
     
@@ -43,11 +43,10 @@ In the project directory, you can run:
 npm start
 
 Runs the app in the development mode.
-Open http://localhost:3000 to view it in the browser.
+Open <http://localhost:3000> to view it in the browser.
 
 The page will reload if you make edits.
 
 License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
-
